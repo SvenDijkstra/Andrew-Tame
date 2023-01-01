@@ -1,5 +1,5 @@
 # Andrew-Tame
-ARK-Tropics-Andrewsarchus auto tame
+ARK-Tropics-Andrewsarchus auto tame (2560*1440 Redolution)
 
 
 Andrewsarchus auto tamer
