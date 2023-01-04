@@ -1,12 +1,8 @@
-#SingleInstance,Force			;
 #NoEnv							; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn							; Enable warnings to assist with detecting common errors.
 SendMode Input					; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir, %A_ScriptDir%	; Ensures a consistent starting directory.
 
- 
-;;ARK TURQOISE COLOR 
-;;0x795E00
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 toggle_tame := 0
 global tame_key := "none"
@@ -15,22 +11,11 @@ global LEFT = 900
 global RIGHT = 1650
 global MIDDLE = 1275
 global HOOG = 1000
-
-
-;F9::
-;MsgBox yHealthT=%yHealthT%
-;Sleep, 1000
-;getHealth()
-;producePoop()
-;autoFish()
-;checkTame()
-;tameAndrewsarchus()
-;return
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 F9::
-	;IfWinNotActive ARK: Survival Evolved
-	;	return
+	IfWinNotActive ARK: Survival Evolved
+		return
 	if toggle_tame = 0
 		{
 		SetTimer, tameAndrewsarchus, 50
@@ -44,8 +29,6 @@ F9::
 		Tooltip, , , , 3
 		}
 	return
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 tameAndrewsarchus() {
 	;IfWinActive ARK: Survival Evolved
@@ -117,8 +100,7 @@ tameAndrewsarchus() {
 		        }
 		        else
 		        {
-;;FIND RIGHT GREEN				
-					
+;;FIND RIGHT GREEN			
 					PixelSearch, Px, Py, 1641, 748, 1641, 748, 0x00FE42, 75, Fast
 				    if (ErrorLevel 	= 0)
 				    {
@@ -158,135 +140,16 @@ tameAndrewsarchus() {
 				}
 			}
 		}
-				
-				
-				
-				
-				
 		
-	;}
-	;else
-	;{
-	;	if WinExist("ARK: Survival Evolved") {
-	;		WinActivate
-	;	}
-	;}
+	}
+	else
+	{
+		if WinExist("ARK: Survival Evolved") {
+			WinActivate
+		}
+	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;;;;tameAndrewsarchus() {
-;;;;	;IfWinActive ARK: Survival Evolved
-;;;;	;{	
-;;;;		ToolTip, AUTO TAME, 10, 50, 3
-;;;;		MsgBox Tame_key=%tame_key%
-;;;;;;FIND LEFT WHITE
-;;;;		PixelSearch, Px, Py, 911, 748, 911, 748, 0XFFFFFF, 10, Fast
-;;;;		if (ErrorLevel = 0)
-;;;;		{
-;;;;			if ( tame_key != "a" ) {
-;;;;				ToolTip KEY: A DOWN, 1276, 748, 3
-;;;;				SendInput {a down}
-;;;;				tame_key := "a"
-;;;;			}
-;;;;		}
-;;;;		else
-;;;;		{	
-;;;;			;;FIND LEFT GREEN
-;;;;			PixelSearch, Px, Py, 911, 748, 911, 748, 0X00F13F, 10, Fast
-;;;;			if (ErrorLevel = 0)
-;;;;			{
-;;;;				if ( tame_key != "a" ) {
-;;;;					ToolTip KEY: A DOWN, 1276, 748, 3
-;;;;					SendInput {a down}
-;;;;					tame_key := "a"
-;;;;				}
-;;;;			}
-;;;;			else 
-;;;;			{
-;;;;				if ( tame_key == "none" ) {
-;;;;				return
-;;;;				}
-;;;;				if ( tame_key == "a" ) {
-;;;;					ToolTip KEY: A UP, 911, 666, 3
-;;;;					SendInput {a up}
-;;;;					tame_key := "none"
-;;;;				}
-;;;;				if ( tame_key == "d" ) {
-;;;;					ToolTip KEY: D UP, 911, 666, 3
-;;;;					;SendInput {d up}
-;;;;					tame_key := "none"
-;;;;				}
-;;;;			}
-;;;;		}
-;;;;		
-;;;;;;FIND RIGHT WHITE
-;;;;		PixelSearch, Px, Py, 1641, 748, 1641, 748, 0XFBFFFF, 10, Fast
-;;;;		if (ErrorLevel = 0)
-;;;;		{
-;;;;			if ( tame_key != "d" ) {
-;;;;				ToolTip KEY: D DOWN, 911, 666, 3
-;;;;				;SendInput {d down}
-;;;;				tame_key := "d"	
-;;;;			}
-;;;;		}
-;;;;		else
-;;;;		{
-;;;;			;;FIND RIGHT GREEN
-;;;;			PixelSearch, Px, Py, 1641, 748, 1641, 748, 0X00F13F, 10, Fast
-;;;;			PixelGetColor, OutputVar, 1641, 748
-;;;;			MsgBox Right Green = %OutputVar%
-;;;;			if (ErrorLevel = 0)
-;;;;			{
-;;;;				if ( tame_key != "d" ) {
-;;;;					ToolTip KEY: D DOWN, 911, 666, 3
-;;;;					;SendInput {d down}
-;;;;					tame_key := "d"	
-;;;;				}
-;;;;			}
-;;;;			else 
-;;;;			{
-;;;;				if ( tame_key == "none" ) {
-;;;;				return
-;;;;				}
-;;;;				if ( tame_key == "a" ) {
-;;;;					ToolTip KEY: A UP, 911, 666, 3
-;;;;					;SendInput {a up}
-;;;;					tame_key := "none"
-;;;;				}
-;;;;				if ( tame_key == "d" ) {
-;;;;					ToolTip KEY: D UP, 911, 666, 3
-;;;;					;SendInput {d up}
-;;;;					tame_key := "none"
-;;;;				}
-;;;;			}
-;;;;		}
-;;;;	;}
-;;;;	;else
-;;;;	;{
-;;;;	;	if WinExist("ARK: Survival Evolved") {
-;;;;	;		WinActivate
-;;;;	;	}
-;;;;	;}
-;;;;}
-
-^!z::  ; Control+Alt+Z hotkey.
-MouseGetPos, MouseX, MouseY
-PixelGetColor, color, %MouseX%, %MouseY%
-MsgBox The color at the current cursor position is %color%.
-return
 
 RemoveToolTip:
 	ToolTip
